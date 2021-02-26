@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'Input.dart';
+import 'convert.dart';
+import 'result.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,11 +18,11 @@ class _MyAppState extends State<MyApp> {
   double _inputUser = 0;
   double _kelvin = 0;
   double _reamur =0;
-  final inputController = TextEditingController();
+  TextEditingController etInput = new TextEditingController();
 
   void hitungSuhu(){
     setState(() {
-      _inputUser=double.parse(inputController.text);
+      _inputUser=double.parse(etInput.text);
       _kelvin = _inputUser + 273;
       _reamur = (_inputUser*4)/5;
     });
@@ -39,49 +42,9 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Center(
-               child: TextFormField(
-                 controller: inputController,
-                  decoration:  InputDecoration(hintText: "Masukkan Suhu Dalam Celcius"),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly],
-               ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Suhu dalam Kelvin", 
-                      style: TextStyle(fontSize: 20),), 
-                      Text("$_kelvin", style: TextStyle(fontSize: 20),)],
-                    ),
-                    margin: EdgeInsets.all(8),
-                  ),
-                  Container(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [Text("Suhu dalam Reamur", 
-                      style: TextStyle(fontSize: 20),), 
-                      Text("$_reamur", style: TextStyle(fontSize: 20),)],
-                    ),
-                    margin: EdgeInsets.all(8),
-                  ),
-                ],
-            ),
-            ),
-            Container(
-            child:  RaisedButton(onPressed: (){hitungSuhu();},
-            textColor: Colors.white,
-            color: Colors.blueAccent,
-            child: Text("Konversi Suhu", style: TextStyle(fontSize: 20),
-            ),
-            ),
-            width: double.infinity,
-            height: 50,
-            ),
+            Input(etInput: etInput),
+            result(kelvin: _kelvin, reamur: _reamur),
+            convert(konvertHandler: hitungSuhu),
           ],
         ),
       ),
