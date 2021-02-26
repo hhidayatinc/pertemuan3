@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
   double _kelvin = 0;
   double _reamur =0;
   TextEditingController inputController = new TextEditingController();
+  final konvertHandler = Function;
 
   void hitungSuhu(){
     setState(() {
@@ -51,5 +52,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+
 
 
