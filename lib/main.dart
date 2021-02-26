@@ -18,11 +18,11 @@ class _MyAppState extends State<MyApp> {
   double _inputUser = 0;
   double _kelvin = 0;
   double _reamur =0;
-  TextEditingController etInput = new TextEditingController();
+  TextEditingController input = new TextEditingController();
 
   void hitungSuhu(){
     setState(() {
-      _inputUser=double.parse(etInput.text);
+      _inputUser=double.parse(input.text);
       _kelvin = _inputUser + 273;
       _reamur = (_inputUser*4)/5;
     });
@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Input(etInput: etInput),
+            Input(etInput: input),
             result(kelvin: _kelvin, reamur: _reamur),
             convert(konvertHandler: hitungSuhu),
           ],
