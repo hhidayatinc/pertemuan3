@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class convert extends StatelessWidget{
+class Convert extends StatelessWidget{
   final Function konvertHandler;
-  convert({Key key, @required this.konvertHandler});
+  Convert({Key key, @required this.konvertHandler});
   @override
   Widget build(BuildContext context){
     return Container(

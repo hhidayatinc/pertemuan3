@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'Input.dart';
-import 'convert.dart';
-import 'result.dart';
-
+import 'package:konversi_desain_widget/input.dart';
+import 'Convert.dart';
+import 'Result.dart';
 void main() {
   runApp(MyApp());
 }
@@ -42,9 +41,9 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Input(etInput: inputController),
-            result(kelvin: _kelvin, reamur: _reamur),
-            convert(konvertHandler: hitungSuhu),
+           Input(inputController: inputController),
+            Result(kelvin: _kelvin, reamur: _reamur),
+            Convert(konvertHandler: hitungSuhu),
           ],
         ),
       ),
@@ -52,4 +51,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
 

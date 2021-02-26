@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class Input extends StatelessWidget {
-  const Input({Key key,@required this.etInput,}) : super(key: key);
-  
-  final TextEditingController etInput;
-  
+  const Input({
+    Key key,
+    @required this.inputController,
+  }) : super(key: key);
+
+  final TextEditingController inputController;
+
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: etInput,
-        decoration:  InputDecoration(hintText: "Masukkan Suhu Dalam Celcius"),
-        keyboardType: TextInputType.number,
-        inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly],
-      );
-    } 
- }
+    return Center(
+       child: TextFormField(
+         controller: inputController,
+          decoration:  InputDecoration(hintText: "Masukkan Suhu Dalam Celcius"),
+          keyboardType: TextInputType.number,
+          inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly],
+       ),
+    );
+  }
+}
